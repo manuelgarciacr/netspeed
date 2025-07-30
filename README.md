@@ -11,6 +11,9 @@
 set -g @plugin 'tmux-plugins/tpm'
 # ...
 
+# To change an option to its default value, you must eliminate or comment on .tmux.conf, suppress it from 
+#   global options (tmux set -gu @netspeed-...) and re-load the configuration (tmux source .tmux.conf)
+
 # netspeed
 set -g @netspeed-interfaces "eno1 wlp3s0 unknown"        # Net interfaces to consult 
 # set -g @netspeed-max-speed-reset-key J                 # Key binding to reset the max speed. Default M
@@ -33,6 +36,7 @@ set -g status-left-length 100                                             # Assi
 run '~/.tmux/plugins/tpm/tpm'
 ```
 ### Install with C-b I
+### To change an option to its default value, you must eliminate or comment on .tmux.conf, suppress it from global options (tmux set -gu @netspeed ...) and re-load the configuration (tmux source .tmux.conf)
 
 # 📌 tmux2k integration
 
@@ -70,6 +74,9 @@ set -g @tmux2k-right-plugins "bandwidth netspeed2k"      # netspeed tmux2k plugi
 set -g @tmux2k-netspeed2k-colors "light_pink black"      # netspeed color. You can also change directly by editing the main.sh file of the tmux2k plugin
 set -g @plugin '2kabhishek/tmux2k'
 
+# To change an option to its default value, you must eliminate or comment on .tmux.conf, suppress it from global
+#   options (tmux set -gu @netspeed-...) and re-load the configuration (tmux source .tmux.conf)
+
 # netspeed
 set -g @netspeed-interfaces "eno1 wlp3s0"
 # set -g @netspeed-max-speed-reset-key J                 # Key binding to reset the max speed. Default M
@@ -87,3 +94,4 @@ set -g status-position top
 run '~/.tmux/plugins/tpm/tpm'
 ```
 5. ### Refresh the configuration with tmux source ~/.tmux.conf
+6. ### To change an option to its default value, you must eliminate or comment on .tmux.conf, suppress it from global options (tmux set -gu @netspeed-...) and re-load the configuration (tmux source .tmux.conf)

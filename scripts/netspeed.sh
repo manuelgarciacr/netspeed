@@ -39,10 +39,23 @@ save_value()
 
 calculate()
 {
+    FECHA_INI=$(date +%s%N)
     BYTES1=$(cat /sys/class/net/$DEVICE/statistics/$RXTX)
     sleep 1
+    FECHA_FIN=$(date +%s%N)
     BYTES2=$(cat /sys/class/net/$DEVICE/statistics/$RXTX)
-	BPS=$(awk -v bytes2="$BYTES2" -v bytes1="$BYTES1" 'BEGIN { printf "%7.2f\n", (bytes2 - bytes1) / 8 }')
+	SEC=$(awk -v fecha_fin="$FECHA_FIN" -v fecha_ini="$FECHA_INI" 'BEGIN { printf "%.3f\n", (fecha_fin - fecha_ini) / 1000000000 }')
+	BPS=$(awk -v bytes2="$BYTES2" -v bytes1="$BYTES1" -v sec="$SEC" 'BEGIN { printf "%7.2f\n", (bytes2 - bytes1) / sec * 8 }')
+	
+	maxsec=$(tmux show -gqv @netspeed-debug-sec)
+	if (( $(echo "$SEC $maxsec" | awk '{print ($1 > $2)}') )); then
+  		tmux set -g @netspeed-debug-sec "$SEC"
+	fi
+	
+#    BYTES1=$(cat /sys/class/net/$DEVICE/statistics/$RXTX)
+#    sleep 1
+#    BYTES2=$(cat /sys/class/net/$DEVICE/statistics/$RXTX)
+#    BPS=$(awk -v bytes2="$BYTES2" -v bytes1="$BYTES1" 'BEGIN { printf "%7.2f\n", (bytes2 - bytes1) / 8 }')
 
 	save_value
 }
