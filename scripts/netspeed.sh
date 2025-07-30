@@ -8,6 +8,7 @@ save_value()
 {
     stop=$(tmux show -gqv @netspeed-stop)
 	hiden=$(tmux show -gqv @netspeed-hide-max-speed)
+	no_names=$(tmux show -gqv @netspeed-no-names)
 	down_icon=$(tmux show-option -gqv @netspeed-down-icon); [ -z "$down_icon" ] && down_icon=""
 	up_icon=$(tmux show-option -gqv @netspeed-up-icon); [ -z "$up_icon" ] && up_icon=""
 	
@@ -15,6 +16,12 @@ save_value()
 		return
 	fi
 
+	if [[ "$no_names" == "true" ]]; then
+		name=""
+	else
+		name=" $DEVICE:"
+	fi
+	
 	max="$(tmux show-option -gqv "@netspeed-max-bps-$OPTION-$DEVICE")"
     
 	if awk -v bps="$BPS" -v max="$max" 'BEGIN { exit !(bps > max) }'; then
@@ -25,11 +32,11 @@ save_value()
 	declare -n icon=${OPTION}_icon
 	
 	value="$(printf '%7.2f %-4s' $(bps_to_unit "$BPS"))"
-	if [ -z "$hiden" ]; then
+	if [[ "$hiden" != "true" ]]; then
 		value="$value(max $(printf '%.2f %s' $(bps_to_unit "$max")))"
 	fi
 	
-	tmux set -g "@netspeed-$OPTION-$DEVICE" " $icon $DEVICE$value"
+	tmux set -g "@netspeed-$OPTION-$DEVICE" " $icon$name$value"
 
 	if [ "$OPTION" == "down" ]; then
 		up="$(tmux show -gqv "@netspeed-up-$DEVICE")"

@@ -21,7 +21,8 @@ set -g @netspeed-interfaces "eno1 wlp3s0 unknown"        # Net interfaces to con
 # set -g @netspeed-stop-key L                            # Key binding to stop/resume netspeed. Default S 
 # set -g @netspeed-down-icon                            # download icon. Default 
 # set -g @netspeed-up-icon                              # upload icon. Default 
-set -g @netspeed-hide-max-speed true                     # hide max speed
+# set -g @netspeed-no-names false                        # If true, the names are not displayed
+set -g @netspeed-hide-max-speed true                     # If true, the maximun speed is hidden
 set -g @plugin 'manuelgarciacr/netspeed'
 
 # options
@@ -54,7 +55,6 @@ set -g @plugin '2kabhishek/tmux2k'
 set -g @plugin 'manuelgarciacr/netspeed'
 
 # options
-unbind-key -a
 set -g status-position top
 
 run '~/.tmux/plugins/tpm/tpm'
@@ -84,11 +84,11 @@ set -g @netspeed-interfaces "eno1 wlp3s0"
 # set -g @netspeed-stop-key L                            # Key binding to stop/resume netspeed. Default S 
 set -g @netspeed-down-icon                              # download icon. Default 
 set -g @netspeed-up-icon                                # upload icon. Default 
-set -g @netspeed-hide-max-speed true                     # hide max speed
+# set -g @netspeed-no-names false                        # If true, the names are not displayed
+set -g @netspeed-hide-max-speed true                     # If true, the maximun speed is hidden
 set -g @plugin 'manuelgarciacr/netspeed'
 
 # options
-unbind-key -a
 set -g status-position top
 
 run '~/.tmux/plugins/tpm/tpm'
