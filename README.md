@@ -71,6 +71,7 @@ set -g @plugin 'tmux-plugins/tpm'
 # tmux2k
 set -g @tmux2k-bandwidth-network-name "eno1"
 set -g @tmux2k-right-plugins "bandwidth netspeed2k"      # netspeed tmux2k plugin
+set -g @tmux2k-light-pink '#ffb6c1'                      # tmux2k. Special colors in some distributions must be declared explicitly. TODO: check if bug
 set -g @tmux2k-netspeed2k-colors "light_pink black"      # netspeed color. You can also change directly by editing the main.sh file of the tmux2k plugin
 set -g @plugin '2kabhishek/tmux2k'
 
