@@ -59,8 +59,8 @@ set -g status-position top
 
 run '~/.tmux/plugins/tpm/tpm'
 ```
-2. ### Copy netspeed/scripts/netspeed2k.sh into .tmux/plugins/tmux2k/plugins
-2. ### Modify the OUTPUT var in netspeed2k.sh
+2. ### Copy netspeed/scripts/netspeed2k.sh into .tmux/plugins/tmux2k/plugins. TODO: Automatize
+2. ### Modify the OUTPUT var in netspeed2k.sh. TODO: Automatize with a tmux global option (@tmux2k-netspeed2k-output)
 3. ### Update .tmux.conf with the desired configuration
 
     ### 📑 .tmux.conf
